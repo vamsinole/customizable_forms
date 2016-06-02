@@ -1,0 +1,14 @@
+<div>
+<script src="app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" href="app.css">
+	<input type= "text" ng-model = "dropdesc" ></input>
+	<br>
+	<p class = "p" id="bulk" ng-click = "bulk()">Bulk edit options</p>
+	<div ng-show="!bulk_show" >
+	<div ng-include src = "'multidrop.html'" ></div>
+	</div>
+	<div ng-show="bulk_show">
+		<div ng-include src = "'stopbulk.html'"></div>
+	</div>
+</div>

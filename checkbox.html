@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="app.js" defer></script>
+	<!-- <link rel="stylesheet" type="text/css" href="app.css"> -->
+</head>
+<body>
+<div class="optionadd" ng-repeat = "option in options track by $index" ng-mouseover = "show_delete = true" ng-mouseleave = "show_delete = false">
+<input type="checkbox" style="margin: 4px;">
+	<input type="text" ng-model="option.text" id="{{$index}}" placeholder="Enter your option" select-on-click style="margin: 4px;"></input>
+	<img src="delete.png" style="height: 16px;width: 16px;margin-left: 8px;" ng-click = "delete($index)" ng-show="show_delete">
+</input>
+</div>
+<br>
+<input type="checkbox" style="margin: 4px;">
+	<input type="text" ng-click = "add_option()" placeholder="Add option"  style="margin: 4px;"></input>
+</input>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="app.js" defer></script>
+<body>
+
+<div >
+
+ <select ng-model="country" ng-options="x.name for x in mydata">
+
+</select><br><br>
+
+<select ng-model="currency" ng-options="x.currency for x in mydata">
+</select><br><br>
+<input type="number" ng-model="salary"/><br><br> 
+<p>{{currency.mf}}</p>
+<label>Code :{{country.code}}</label><br><br>
+<label>salary({{country.pa}}) :</label><input type="number" ng-model="sal"><br><br>
+</div>
+</body>
+</html>
+  

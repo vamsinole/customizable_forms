@@ -1,0 +1,12 @@
+<body ng-app = "" ng-controller="mCtrl">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="app.js"></script>
+<div class="optionadd" ng-repeat = "option in options track by $index">
+<input type="radio">
+	<input type="text" ng-model="option.text"></input>
+</input>
+</div>
+<br>
+<button type="button" class="addButton" onclick= "addoption()"> Add Option</button>
+
+</body>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom Forms</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js"></script>
+	<script src="app.js" defer></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="app.css">
+
+</head>
+<body ng-app="custom" ng-controller="Ctrl" style="padding: 16px;height: 100%;">
+
+<div class="form">
+<input ng-model = "fname" placeholder="Form title" value="Untitled Form" class="container" select-on-click></input><br>
+<input ng-model = "fdesc" placeholder="Form Instructions" value="Form Description" class="container" select-on-click></input><br>
+</div>
+<ul class="column">
+<div class="card"  ng-repeat="question in questions" > 
+	<input ng-model = "question.qs" required="true" placeholder="Question" class="card question" select-on-click></input>
+	<img src="fav.png" id="fav_image" ng-click="changeImage(this,$index)" class="fav">
+	<div class="remove-menu" ng-mouseover="show_menu = true" ng-mouseleave="show_menu = false">
+	<img src="menu.jpg" class="menu" >
+		<div class="menu-options" ng-show="show_menu">
+            <a href="#">ADD HELPER TEXT</a>
+			<a href="#" ng-click="delete_question($index)">DELETE QUESTION</a>
+        </div>
+	</div>
+	<select class="card dropdown" ng-model="selected" ng-options="type.text as type.text for type in types"
+	 ng-change="changeType($index,selected)">
+	</select><br>
+	<img src="up.png" style="height: 20px;width: 20px;margin-right: 16px;margin-bottom: 16px; float: right;" 
+	ng-click = "up_question($index ,$index - 1)" >
+<img src="down.png" style="height: 20px;width: 20px;margin-right: 16px;margin-bottom: 16px;float: right;"
+	 ng-click = "down_question($index,$index + 1)">
+
+<br>
+<br>
+<br>
+
+<div ng-switch on="selected" class="card switch" >
+	<div ng-switch-default="TEXT (SINGLE LINE)">
+		<div ng-include src = "'textsingle.html'"></div>
+	</div>
+	<div ng-switch-when="TEXTBOX">
+		<ng-include src="'textbox.html'"></ng-include>
+	</div>
+	<div ng-switch-when="DATE">
+		<div><ng-include src="'date.html'"></ng-include>
+		</div>
+	</div>
+	<div ng-switch-when="DROPDOWN">
+		<div ng-include src = "'dropdown.html'"></div>
+	</div>
+	<div ng-switch-when="MULTIPLE CHOICE">
+		 <div ng-include src="'multi.html'"></div>
+	</div>
+	<div ng-switch-when="CHECKBOXES">
+		<div ng-include src= "'checkbox.html'"></div>
+	</div>
+	<div ng-switch-when="YES/NO">
+		<div ng-include src = "'yesno.html'"></div>
+	</div>
+	<div ng-switch-when="CURRENCY">
+		<div ng-include src = "'newoption.html'"></div>
+	</div>
+	<div ng-switch-when="ATTACHMENT">
+		<ng-include src="'attachment.html'"></ng-include>
+	</div>
+</div>
+
+</div>
+
+<br>
+</ul>
+<button type="button" ng-show="showAddButton()" class="addButton" ng-click= "add()"> + ADD ANOTHER QUESTION</button>
+
+</body>
+</html>
